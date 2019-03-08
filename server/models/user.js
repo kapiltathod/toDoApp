@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     },
 
     gender: {
-      type: DataTypes.STRING,
+      type: DataTypes.ENUM,
       allowNull: false,
     },
 
