@@ -9,14 +9,17 @@ module.exports = {
       },
 
       itemName: {
+        allowNull: false,
         type: Sequelize.STRING
       },
 
       description: {
+        allowNull: false,
         type: Sequelize.STRING
       },
 
       comment: {
+        allowNull: false,
         type: Sequelize.STRING
       },
 

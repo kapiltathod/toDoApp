@@ -9,6 +9,7 @@ module.exports = {
       },
 
       comment: {
+        allowNull: false,
         type: Sequelize.STRING
       },
 

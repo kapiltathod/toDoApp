@@ -3,23 +3,23 @@ module.exports = (sequelize, DataTypes) => {
      id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-    },
+     },
 
      comment: {
       type: DataTypes.INTEGER,
       allowNull: false,
-    },
+     },
 
-    createdAt: {
+     createdAt: {
       type: DataTypes.DATE,
       allowNull: false,
-    },
+     },
 
-    updatedAt: {
+     updatedAt: {
       type: DataTypes.DATE,
       allowNull: false,
-    },
-  }, {});
+     },
+   },{});
 
 
   Comment.associate = function(models) {

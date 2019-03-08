@@ -21,13 +21,13 @@ module.exports = (sequelize, DataTypes) => {
     },
 
     createdAt: {
+      type: Sequelize.DATE,
       allowNull: false,
-      type: Sequelize.DATE
     },
 
     updatedAt: {
+      type: Sequelize.DATE,
       allowNull: false,
-      type: Sequelize.DATE
     },
   }, {});
 
