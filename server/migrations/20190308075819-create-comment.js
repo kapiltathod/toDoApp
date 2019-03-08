@@ -31,6 +31,7 @@ module.exports = {
           as: 'todoitemId',
         },
       },
+
       userId: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
