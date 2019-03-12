@@ -1,10 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
   const TodoItem = sequelize.define('TodoItem', {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-
     itemName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -21,12 +16,12 @@ module.exports = (sequelize, DataTypes) => {
     },
 
     createdAt: {
-      type: Sequelize.DATE,
+      type: DataTypes.DATE,
       allowNull: false,
     },
 
     updatedAt: {
-      type: Sequelize.DATE,
+      type: DataTypes.DATE,
       allowNull: false,
     },
   }, {});
