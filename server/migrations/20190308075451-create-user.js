@@ -20,7 +20,7 @@ module.exports = {
 
       gender: {
         allowNull: false,
-        type: Sequelize.ENUM: ["Male", "Female"]
+        type: Sequelize.STRING
       },
 
       dateOfBirth: {
