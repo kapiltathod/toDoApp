@@ -2,6 +2,8 @@ const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const authentication = require('./server/controllers/authentication');
+const jwt = require('jsonwebtoken');
+const User = require('./server/models').User;
 
 // Set up the express app
 const app = express();
@@ -19,7 +21,14 @@ app.get('/', (req, res) => res.status(200).send({
 }));
 
 
-app.post('/signup', authentication.create);
+app.post('/signup', authentication.signup);
+app.post('/login', authentication.login);
+
+app.get('/getUsers', async function(req, res) {
+    const users = await User.findAll({raw: true});
+    res.send(users)
+})
+
 
 ////app.login('/login', authentication.)
 
