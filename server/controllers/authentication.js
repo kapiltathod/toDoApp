@@ -21,7 +21,6 @@ module.exports = {
 
 
   login(req, res) {
-    console.log('=====login===')
     authentication.findOne({where: {email:req.body.email}})
     .then(user=>{
       //console.log('====', user)
@@ -33,21 +32,28 @@ module.exports = {
         }
         console.log(authResponse)
         if (authResponse) {
+          const token = jwt.sign ({
+            email: user.dataValues.email,
+            id: user.dataValues.id
+          },
+            process.env.JWT_KEY, {
+            expiresIn: "1h"
+            }
+          )
           return res.status(201).send({
           message: 'auth successful.',
-        });
+          token: token
+          });
         } else {
           return res.status(201).json({
-            message: 'auth failed'
+          message: 'auth failed'
           });
         }
-
       });
     })
     .catch(err=>{
       res.status(400).json({message:'Invalid Password/email'});
     })
-
   }
 }
 
