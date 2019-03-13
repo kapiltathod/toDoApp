@@ -4,8 +4,7 @@ const jwt = require('jsonwebtoken');
 
 module.exports = {
   signup(req, res) {
-    console.log(req.body)
-    return authentication
+   return authentication
       .create({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -41,18 +40,18 @@ module.exports = {
             }
           )
           return res.status(201).send({
-          message: 'auth successful.',
+          message: 'Authentication successful.',
           token: token
           });
         } else {
           return res.status(201).json({
-          message: 'auth failed'
+          message: 'Incorrect email/password'
           });
         }
       });
     })
     .catch(err=>{
-      res.status(400).json({message:'Invalid Password/email'});
+      res.status(400).json({message:'Go for signup'});
     })
   }
 }
