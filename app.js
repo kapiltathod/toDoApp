@@ -2,9 +2,7 @@ const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const authentication = require('./server/controllers/authentication');
-const jwt = require('jsonwebtoken');
-const User = require('./server/models').User;
-
+const Todo = require('./server/controllers/todos');
 // Set up the express app
 const app = express();
 
@@ -20,7 +18,6 @@ app.get('/', (req, res) => res.status(200).send({
   message: 'Welcome to toDo App.',
 }));
 
-
 app.post('/signup', authentication.signup);
 app.post('/login', authentication.login);
 
@@ -29,7 +26,7 @@ app.get('/getUsers', async function(req, res) {
     res.send(users)
 })
 
+app.post('/todos', Todo.createTodo);
 
-////app.login('/login', authentication.)
 
 module.exports = app;
