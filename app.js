@@ -4,7 +4,9 @@ const bodyParser = require('body-parser');
 const authentication = require('./server/controllers/authentication');
 const Todo = require('./server/controllers/todos');
 const TodoItem = require('./server/controllers/todoItems');
-const Comment = require('./server/controllers/comment')
+const Comment = require('./server/controllers/comment');
+const checkAuth = require('./middleware/check-auth');
+
 // Set up the express app
 const app = express();
 
@@ -27,21 +29,30 @@ app.get('/getUsers', async function(req, res) {
     res.send(users)
 })
 
+
+
 //routes for authentication
 app.post('/signup', authentication.signup);
 app.post('/login', authentication.login);
 
-// routes for todo
-app.post('/todos', Todo.createTodo);
-app.get('/todos/list', Todo.list);
-app.get('/todos/retrieve', Todo.retrieve);
+
+//routes for todo
+app.post('/todos', checkAuth, Todo.createTodo);
+app.get('/todos/list', checkAuth, Todo.list);
 
 
 
 // routes for todoItems
-app.post('/todoItems', TodoItem.createTodoItems);
+app.post('/todoItems', checkAuth, TodoItem.createTodoItems);
+
+
+
 
 //routes for comment
-app.post('/comments', Comment.createComments);
+app.post('/comments', checkAuth, Comment.createComments);
+
+
+
+
 
 module.exports = app;
