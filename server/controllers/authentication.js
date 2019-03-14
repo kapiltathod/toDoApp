@@ -2,6 +2,7 @@ const authentication = require('../models').User;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+
 module.exports = {
   signup(req, res) {
    return authentication
@@ -18,10 +19,9 @@ module.exports = {
       .catch(error => res.status(400).send(error));
   },
 
-
   login(req, res) {
     authentication.findOne({where: {email:req.body.email}})
-    .then(user=>{
+    .then(user => {
       //console.log('====', user)
       bcrypt.compare(req.body.password, user.dataValues.password, (err, authResponse) => {
         if(err){
