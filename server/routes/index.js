@@ -1,11 +1,10 @@
-const Todo = require('./server/controllers/todos');
-const TodoItem = require('./server/controllers/todoItems');
+const router = require('express').Router();
+const User = require('./authentication');
+const Todo = require('./todos');
+const TodoItem = require('./todoItems');
 
-// routes for todo
-app.post('/todos', Todo.createTodo);
+router.use('/authentication', User);
+router.use('/todos', Todo);
+router.use('/todos/:todoId/items', TodoItem);
 
-
-
-// routes for todoItems
-app.post('/todoItems', TodoItem.createTodoItems)
-
+module.exports = router;
