@@ -1,4 +1,7 @@
-const authentication = require('./server/controllers/authentication');
+const router = require('express').Router();
+const User = require('../controllers/authentication');
 
-app.post('/signup', authentication.signup);
-app.post('/login', authentication.login);
+router.post('/signup', User.signup);
+router.post('/login', User.login);
+
+module.exports = router;
