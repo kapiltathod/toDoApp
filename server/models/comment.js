@@ -16,8 +16,8 @@ module.exports = (sequelize, DataTypes) => {
      },
    },{});
 
-
   Comment.associate = function(models) {
+
     Comment.belongsTo(models.TodoItem, {
       foreignKey: 'todoItemId',
       onDelete: 'CASCADE',

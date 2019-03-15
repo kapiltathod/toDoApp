@@ -11,7 +11,6 @@ module.exports = {
       .catch(error => res.status(400).send(error));
   },
 
-
   list (req, res) {
     return Todo
       .findAll({

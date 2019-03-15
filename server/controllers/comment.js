@@ -1,6 +1,7 @@
 const Comment = require('../models').Comment;
 
 module.exports = {
+
   createComments (req, res) {
     return Comment
       .create({

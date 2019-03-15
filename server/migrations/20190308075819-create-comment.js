@@ -44,7 +44,6 @@ module.exports = {
       },
     });
   },
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Comments');
+  down: (queryInterface, Sequelize) => {return queryInterface.dropTable('Comments');
   }
 };
