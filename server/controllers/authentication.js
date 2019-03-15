@@ -1,11 +1,12 @@
-const authentication = require('../models').User;
+const User = require('../models').User;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 
+
 module.exports = {
   signup(req, res) {
-   return authentication
+   return User
       .create({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -20,9 +21,10 @@ module.exports = {
   },
 
   login(req, res) {
-    authentication.findOne({where: {email:req.body.email}})
+    console.log(req.body);
+    User.findOne({where: {email:req.body.email}})
     .then(user => {
-      //console.log('====', user)
+      console.log('====', user)
       bcrypt.compare(req.body.password, user.dataValues.password, (err, authResponse) => {
         if(err){
           return res.status(201).json({
@@ -40,7 +42,7 @@ module.exports = {
             }
           )
           return res.status(201).send({
-          message: 'Authentication successful.',
+          message: 'User successful.',
           token: token
           });
         } else {
