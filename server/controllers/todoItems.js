@@ -2,7 +2,7 @@ const TodoItem = require('../models').TodoItem;
 
 module.exports = {
 
-  createTodoItems(req, res) {
+   create(req, res) {
     return TodoItem
       .create({
         itemName: req.body.itemName,
