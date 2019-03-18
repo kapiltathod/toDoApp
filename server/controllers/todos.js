@@ -1,45 +1,39 @@
 const Todo = require('../models').Todo;
-// const TodoItem = require('../models').TodoItem;
-
-// module.exports = {
-//   create (req, res) {
-//     return Todo
-//       .create({
-//         title: req.body.title,
-//       })
-//       .then(todo => res.status(201).send(todo))
-//       .catch(error => res.status(400).send(error));
-//   },
-
-//   list (req, res) {
-//     return Todo
-//       .findAll({
-//         include: [{
-//           model: TodoItem,
-//           as: 'todoItems',
-//         }],
-//       })
-//       .then(todos => res.status(200).send(todos))
-//       .catch(error => res.status(400).send(error));
-//   },
-// }
-
-
 
 class Todos {
-  static async create(res, req) {
+  static async create(req, res) {
     try {
       const todo = await Todo
         .create ({
           title: req.body.title,
+          userId: req.user.id,
         })
-        res.status(201).send(todo)
+        if (req.body.title.length < 3 ) {
+          return res.status(201).send({
+          message: 'Title length should be more than 3'
+          })
+        }
+        if(/^[a-zA-Z0-9]*$/.test(req.body.title) == false) {
+          return res.status(201).send({
+          message: 'Not alpha numeric'
+          })
+        } else {
+          res.status(201).send(todo)
+        }
     } catch (error) {
-      console.log("okay now we are here");
+      return res.status(400).send(error);
+    }
+  }
+
+  static async list(req, res) {
+    try {
+      const todo = await Todo
+        .all()
+      res.status(201).send(todo)
+    } catch (error) {
       return res.status(400).send(error);
     }
   }
 }
-
 
 module.exports = Todos;
