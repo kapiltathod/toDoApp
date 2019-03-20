@@ -7,6 +7,7 @@ const Comment = require('./comments')
 router.use('/', Authentication);
 router.use('/', Todo);
 router.use('/', TodoItem);
-router.use('/', Comment)
+router.use('/', Comment);
 
 module.exports = router;
+
