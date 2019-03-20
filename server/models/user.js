@@ -2,53 +2,53 @@ module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     firstName: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
 
     lastName: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
 
     gender: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
 
     dateOfBirth: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: false
     },
 
     email: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
 
     password: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
 
     createdAt: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: false
     },
 
     updatedAt: {
       type: DataTypes.DATE,
-      allowNull: false,
-    },
-  }, {});
+      allowNull: false
+    }
+  }, {})
 
-  User.associate = function(models) {
+  User.associate = function (models) {
     User.hasMany(models.Todo, {
-      foreignKey: 'userId',
-    });
+      foreignKey: 'userId'
+    })
 
     User.hasMany(models.Comment, {
-      foreignKey: 'userId',
-    });
-  };
-  return User;
-};
+      foreignKey: 'userId'
+    })
+  }
+  return User
+}

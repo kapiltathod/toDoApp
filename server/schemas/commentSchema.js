@@ -1,5 +1,5 @@
 const schema = {
-  comment: { type: "any"}
+  comment: { type: 'any' }
 }
 
-module.exports = schema;
+module.exports = schema

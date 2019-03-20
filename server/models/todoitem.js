@@ -2,40 +2,39 @@ module.exports = (sequelize, DataTypes) => {
   const TodoItem = sequelize.define('TodoItem', {
     itemName: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
 
     description: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
 
     comment: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
 
     createdAt: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: false
     },
 
     updatedAt: {
       type: DataTypes.DATE,
-      allowNull: false,
-    },
-  }, {});
+      allowNull: false
+    }
+  }, {})
 
-  TodoItem.associate = function(models) {
-
+  TodoItem.associate = function (models) {
     TodoItem.belongsTo(models.Todo, {
       foreignKey: 'todoId',
-      onDelete: 'CASCADE',
-    });
+      onDelete: 'CASCADE'
+    })
 
     TodoItem.hasMany(models.Comment, {
-      foreignKey: 'todoItemId',
-    });
-  };
-  return TodoItem;
-};
+      foreignKey: 'todoItemId'
+    })
+  }
+  return TodoItem
+}

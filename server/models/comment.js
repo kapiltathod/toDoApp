@@ -1,32 +1,31 @@
 module.exports = (sequelize, DataTypes) => {
   const Comment = sequelize.define('Comment', {
-     comment: {
+    comment: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-     },
+      allowNull: false
+    },
 
-     createdAt: {
+    createdAt: {
       type: DataTypes.DATE,
-      allowNull: false,
-     },
+      allowNull: false
+    },
 
-     updatedAt: {
+    updatedAt: {
       type: DataTypes.DATE,
-      allowNull: false,
-     },
-   },{});
+      allowNull: false
+    }
+  }, {})
 
-  Comment.associate = function(models) {
-
+  Comment.associate = function (models) {
     Comment.belongsTo(models.TodoItem, {
       foreignKey: 'todoItemId',
-      onDelete: 'CASCADE',
-    });
+      onDelete: 'CASCADE'
+    })
 
     Comment.belongsTo(models.User, {
       foreignKey: 'userId',
-      onDelete: 'CASCADE',
-    });
-  };
-  return Comment;
-};
+      onDelete: 'CASCADE'
+    })
+  }
+  return Comment
+}
