@@ -29,8 +29,8 @@ module.exports = {
         references: {
           model: 'TodoItems',
           key: 'id',
-          as: 'todoItemId',
-        },
+          as: 'todoItemId'
+        }
       },
 
       userId: {
@@ -39,11 +39,12 @@ module.exports = {
         references: {
           model: 'Users',
           key: 'id',
-          as: 'userId',
-        },
-      },
-    });
+          as: 'userId'
+        }
+      }
+    })
   },
-  down: (queryInterface, Sequelize) => {return queryInterface.dropTable('Comments');
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.dropTable('Comments')
   }
-};
+}
