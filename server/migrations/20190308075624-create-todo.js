@@ -22,11 +22,12 @@ module.exports = {
         references: {
           model: 'Users',
           key: 'id',
-          as: 'userId',
-        },
-      },
-    });
+          as: 'userId'
+        }
+      }
+    })
   },
-  down: (queryInterface, Sequelize) => {return queryInterface.dropTable('Todos');
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.dropTable('Todos')
   }
-};
+}

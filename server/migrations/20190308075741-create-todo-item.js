@@ -39,11 +39,12 @@ module.exports = {
         references: {
           model: 'Todos',
           key: 'id',
-          as: 'todoId',
-        },
-      },
-    });
+          as: 'todoId'
+        }
+      }
+    })
   },
-  down: (queryInterface, Sequelize) => {return queryInterface.dropTable('TodoItems');
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.dropTable('TodoItems')
   }
-};
+}
