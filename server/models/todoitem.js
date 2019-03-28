@@ -1,5 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   const TodoItem = sequelize.define('TodoItem', {
+
     itemName: {
       type: DataTypes.STRING,
       allowNull: false
