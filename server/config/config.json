@@ -1,5 +1,6 @@
 {
   "development": {
+    "JWT_KEY": "secret",
     "username": "postgres",
     "password": "kapil",
     "database": "test",
@@ -7,6 +8,7 @@
     "dialect": "postgres"
   },
   "test": {
+    "JWT_KEY": "secret",
     "username": "postgres",
     "password": "test",
     "database": "database_test",
@@ -14,6 +16,7 @@
     "dialect": "postgres"
   },
   "production": {
+    "JWT_KEY": "secret",
     "username": "postgres",
     "password": "kapil",
     "database": "database_production",
