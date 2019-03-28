@@ -7,8 +7,8 @@ class TodoItems {
         .create({
           itemName: req.body.itemName,
           description: req.body.description,
-          comment: req.body.comment,
-          todoId: req.params.todoId
+          comment: req.body.comment
+          // todoId: req.params.todoId
         })
       res.status(201).send(todoItem)
     } catch (error) {
