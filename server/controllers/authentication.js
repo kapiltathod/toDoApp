@@ -1,6 +1,7 @@
 const { User } = require('../models')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const config = require('../config/config.json')
 
 class Authentication {
   static async signup (req, res) {
@@ -33,7 +34,7 @@ class Authentication {
             email: user.dataValues.email,
             id: user.dataValues.id
           },
-          process.env.JWT_KEY, {
+          config[process.env.NODE_ENV].JWT_KEY, {
             expiresIn: '1h'
           })
           return res.status(201).send({
