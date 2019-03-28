@@ -5,10 +5,11 @@ function validatorMiddleware (schema) {
     const v = new Validator()
     const check = v.compile(schema)
     const result = check(req.body)
-    if (!result) {
+    if (result === true) {
+      next()
+    } else {
       return res.status(201).send(result)
     }
-    next()
   }
 }
 
